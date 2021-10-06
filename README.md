@@ -62,7 +62,7 @@ Other commands can be used.
 
 ```bash
 # Build the project
-yarn buid
+yarn build
 
 # Start built project
 yarn start
