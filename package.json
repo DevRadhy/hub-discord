@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "engines" : { "node": ">=16.6.0" },
+  "engines" : {
+    "node": ">=16.6.0"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "jest",
-    "lint": "eslint ./src/**/*.ts",
     "dev": "tsnd --inspect --respawn --transpile-only --ignore-watch node_modules -r dotenv/config src/index.ts",
+    "test": "jest",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "typeorm": "node ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
