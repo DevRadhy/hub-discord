@@ -15,7 +15,7 @@ const coworking = async ({ message }: ICommandsProps) => {
 
   message.delete();
 
-  if(mentions.size <= 0) return message.reply({ content: "Desculpe, você precisa mencionar um ou mais membros"});
+  if(mentions.size <= 0) return message.reply({ content: "Desculpe, você precisa mencionar um ou mais membros" });
 
   const permissions: PermissionString[] = [ 'CONNECT', 'SEND_MESSAGES', 'SPEAK', 'STREAM', 'VIEW_CHANNEL' ];
   const membersPermissions: OverwriteResolvable[] = [
