@@ -9,7 +9,7 @@ import { MessageService } from './database/services/MessageService';
 
 import './database';
 
-const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+const client = new Client({ intents: [], partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
 const messageService = new MessageService();
 
@@ -89,10 +89,10 @@ client.on('guildMemberAdd', (member) => {
   embed.setThumbnail(String(member.user.avatarURL()));
   embed.setDescription(`Seja bem-vindo(a) ${member.user.username}`);
 
-  channel.send(embed);
+  channel.send({ embeds: [embed] });
 });
 
-client.on('message', (message) => {
+client.on('messageCreate', (message) => {
   event(client, message, commands);
 });
 

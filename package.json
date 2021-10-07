@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines" : { "node": ">=16.6.0" },
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
@@ -12,7 +13,7 @@
     "typeorm": "node ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.2.0",
     "dotenv": "^10.0.0",
     "node-cron": "^3.0.0",
     "pg": "^8.6.0",

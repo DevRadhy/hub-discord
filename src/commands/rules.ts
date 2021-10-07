@@ -18,7 +18,7 @@ const memberRules = ({ message }: ICommandsProps) => {
     embed.addField(`${prefix} ${rule.name}`, rule.description);
   });
 
-  message.channel.send(embed);
+  message.channel.send({ embeds: [embed] });
 };
 
 export const details = {
