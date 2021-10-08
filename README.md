@@ -1,9 +1,9 @@
 <h1 align="center">HubBOT</h1>
 
 <p align="center">
-  <a href="#introdução">Introduction</a> |
-  <a href="#tecnologias">Technologies</a> |
-  <a href="#contribuindo">Contributing</a>
+  <a href="#introduction">Introduction</a> |
+  <a href="#technologies">Technologies</a> |
+  <a href="#contributing">Contributing</a>
 </p>
 
 ## Introduction
@@ -21,12 +21,10 @@ Project developed using the technologies below:
 - Node-CRON
 - Discord.js
 
-## Contributing
-Before starting, read the [general community contribution guide](https://github.com/aHub-Tech/projects-template/blob/main/CONTRIBUTING.md).
-
+## Starting
 You can clone the repository and install dependencies with the following commands.
 
-Clonando repositório.
+Cloning repository.
 ```bash
 git clone https://github.com/aHub-Tech/hub-discord.git
 # gh repo clone aHub-Tech/hub-discord
@@ -52,24 +50,32 @@ DATABASE_USER=your_database_user
 DATABASE_PASSWORD=your_database_password
 ```
 
-To start the project you can use the following command.
+## Contributing
+If you want to contribute for this project read the [general community contributing guide](./CONTRIBUTING.md).
 
-```bash
-yarn dev
-```
+After you are done reading the [general community contributing guide](./CONTRIBUTING.md) we also would recommend you to read the [Starting section](#starting), then you would know the basics for contributing to this project.
 
-Other commands can be used.
+### Commands
+It may be useful to use some commands during development, in which case you can use the following commands below:
 
-```bash
-# Build the project
-yarn build
+> if you use `npm` you can use the commands with `npm run <command>` or if you use `yarn` `run` is not necessary, for exemple.
+>
+> ```bash
+> yarn dev
+> # or npm run dev
+> ```
 
-# Start built project
-yarn start
+`build` - Build project.
 
-# Start tests
-yarn test
+`start` - Run built project.
 
-# Use TypeORM CLI
-yarn typeorm
-```
+`test` - Run tests.
+
+`dev` - Start project with development code.
+
+`lint` - Start ESLint checker.
+
+`typeorm` - Use the TypeORM CLI.
+
+## License
+This project is under the [GNU General Public License v3.0](./LICENSE). You can read more about it [here](./LICENSE).
