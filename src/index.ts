@@ -1,4 +1,4 @@
-import { Client, MessageEmbed } from "discord.js";
+import { Client, Intents, MessageEmbed } from "discord.js";
 import { event } from './events/message';
 import { Commands } from "./DTO/CommandsDTO";
 import { getEmoji } from "./utils/getEmojis";
@@ -9,7 +9,15 @@ import { MessageService } from './database/services/MessageService';
 
 import './database';
 
-const client = new Client({ intents: [], partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+const client = new Client({
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MEMBERS,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+  ],
+  partials: ['MESSAGE', 'CHANNEL', 'REACTION']
+});
 
 const messageService = new MessageService();
 
