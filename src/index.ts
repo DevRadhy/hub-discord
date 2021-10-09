@@ -1,7 +1,7 @@
 import { Client, Intents, MessageEmbed } from "discord.js";
 import { event } from './events/message';
 import { Commands } from "./DTO/CommandsDTO";
-import { getEmoji } from "./utils/getEmojis";
+import { getEmoji } from "./utils/getEmoji";
 import path from 'path';
 import fs from 'fs';
 

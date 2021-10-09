@@ -1,4 +1,6 @@
-import { getEmoji } from "./getEmojis";
+import { getEmoji } from "./getEmoji";
+
+jest.mock('../../reaction.json', () => require('../mock/reaction.json'));
 
 describe("Emoji", () => {
   it("Should be able to return an emoji", () => {
@@ -9,8 +11,6 @@ describe("Emoji", () => {
   });
 
   it("Should not be able to return an emoji", () => {
-    const emoji = getEmoji('');
-
-    expect(emoji).toBe(undefined);
+    expect(() => getEmoji('')).toThrow(Error);
   });
 });

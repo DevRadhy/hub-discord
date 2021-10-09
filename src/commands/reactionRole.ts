@@ -1,7 +1,7 @@
 import { MessageReaction } from "discord.js";
 import { MessageService } from "../database/services/MessageService";
 import { ICommandsProps } from "../DTO/CommandsDTO";
-import { getEmoji } from "../utils/getEmojis";
+import { getEmoji } from "../utils/getEmoji";
 
 const { message: messageReaction, reactions } = require('../../reaction.json');
 
