@@ -2,8 +2,8 @@ import { Client, Intents, MessageEmbed } from "discord.js";
 import { event } from './events/message';
 import { Commands } from "./DTO/CommandsDTO";
 import { getEmoji } from "./utils/getEmoji";
-import path from 'path';
-import fs from 'fs';
+import { initCommands } from "./utils/initCommands";
+import path from "path";
 
 import { MessageService } from './database/services/MessageService';
 
@@ -21,27 +21,8 @@ const client = new Client({
 
 const messageService = new MessageService();
 
-const commandsPath = path.join(__dirname, 'commands');
-const commands: Commands = {};
-
-fs.readdir(commandsPath, (error, files) => {
-  files.map((file) => {
-    const module = require(`./commands/${file}`);
-    const { name, aliasses, enable, execute } = module.details;
-
-    commands[name] = {
-      enable,
-      execute,
-    };
-
-    aliasses.map((alias: string) => {
-      commands[alias] = {
-        enable,
-        execute,
-      };
-    });
-  });
-});
+const commandsPath = path.join(__dirname, '..', 'commands');
+const commands: Commands = initCommands(commandsPath);
 
 client.on('ready', () => {
   const status = [
