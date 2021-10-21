@@ -5,7 +5,7 @@ import path from 'path';
 
 describe('Commands', () => {
   it('Should be possible to return commands', () => {
-    const commandsPath = path.join(__dirname, '..', 'mock', 'commands');
+    const commandsPath = path.join(__dirname, '..', 'tests', 'mock', 'commands');
     const commands: Commands = initCommands(commandsPath);
 
     expect(commands).toHaveProperty('coworking');

@@ -1,6 +1,6 @@
 import { getEmoji } from "./getEmoji";
 
-jest.mock('../../reaction.json', () => require('../mock/reaction.json'));
+jest.mock('../../reaction.json', () => require('../tests/mock/reaction.json'));
 
 describe("Emoji", () => {
   it("Should be able to return an emoji", () => {
