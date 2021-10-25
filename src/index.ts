@@ -21,7 +21,7 @@ const client = new Client({
 
 const messageService = new MessageService();
 
-const commandsPath = path.join(__dirname, '..', 'commands');
+const commandsPath = path.join(__dirname, 'commands');
 const commands: Commands = initCommands(commandsPath);
 
 client.on('ready', () => {
@@ -47,9 +47,12 @@ client.on('messageReactionAdd', async (reaction, user) => {
   if (message?.message_id !== id) return;
 
   const emojiName = reaction.emoji.name;
+
+  if(!emojiName) return;
+
   const emoji = getEmoji(emojiName);
 
-  guildMember?.roles.add(emoji.reaction_id);
+  guildMember?.roles.add(emoji.role_id);
 });
 
 client.on('messageReactionRemove', async (reaction, user) => {
@@ -61,9 +64,12 @@ client.on('messageReactionRemove', async (reaction, user) => {
   if (message?.message_id !== id) return;
 
   const emojiName = reaction.emoji.name;
+
+  if(!emojiName) return;
+
   const emoji = getEmoji(emojiName);
 
-  guildMember?.roles.remove(emoji.reaction_id);
+  guildMember?.roles.remove(emoji.role_id);
 });
 
 client.on('guildMemberAdd', (member) => {

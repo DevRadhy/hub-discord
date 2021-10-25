@@ -16,7 +16,9 @@ class MessageService {
 
     const messageIdAlreadyExists = await messageRepository.findOne({ message_id });
 
-    if(!messageIdAlreadyExists) return;
+    if(!messageIdAlreadyExists) {
+      throw new Error("Reaction Role message does not exists.");
+    }
 
     const message = await messageRepository.findOne({ guild_id, message_id });
 

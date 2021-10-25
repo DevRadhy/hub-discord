@@ -2,7 +2,7 @@ const { reactions } = require('../../reaction.json');
 
 interface IEmojiProps {
   name: string;
-  reaction_id: string;
+  role_id: string;
 }
 
 export function getEmoji(emojiName: string): IEmojiProps {

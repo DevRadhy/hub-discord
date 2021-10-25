@@ -1,8 +1,8 @@
 {
-  "message": "Reaja com uma dos seguintes emojis para ganhar os cargos:\n**- Chocolate 🍫**\n**- Café ☕**\n**- Bolo 🍰**",
+  "message": "Reaja com um dos seguintes emojis para ganhar os cargos:\n**- Chocolate 🍫**\n**- Café ☕**\n**- Bolo 🍰**",
   "reactions": [
-    { "name": "🍫", "reaction_id": "862089047304306698" },
-    { "name": "☕", "reaction_id": "862089271745314836" },
-    { "name": "🍰", "reaction_id": "862089430054600734" }
+    { "name": "🍫", "role_id": "862089047304306698" },
+    { "name": "☕", "role_id": "862089271745314836" },
+    { "name": "🍰", "role_id": "862089430054600734" }
   ]
 }

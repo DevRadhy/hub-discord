@@ -8,7 +8,7 @@ const { message: messageReaction, reactions } = require('../../reaction.json');
 const reactionRole = ({ message }: ICommandsProps) => {
   const messageService = new MessageService();
 
-  message.channel.send(messageReaction.toString()).then(async (msg) => {
+  message.channel.send(messageReaction).then(async (msg) => {
     reactions.map(async (reaction: { name: string }) => {
       await msg.react(reaction.name);
     });
@@ -25,10 +25,12 @@ const reactionRole = ({ message }: ICommandsProps) => {
     reactionCollector.on('collect', (reaction, user) => {
       const guildMember = message.guild?.members.cache.get(user.id);
       const emojiName = reaction.emoji.name;
+
+      if(!emojiName) return;
     
       const emoji = getEmoji(emojiName);
     
-      guildMember?.roles.add(emoji.reaction_id);
+      guildMember?.roles.add(emoji.role_id);
     });
   });
 };

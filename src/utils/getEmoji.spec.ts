@@ -5,7 +5,7 @@ jest.mock('../../reaction.json', () => require('../tests/mock/reaction.json'));
 describe("Emoji", () => {
   it("Should be able to return an emoji", () => {
     const emoji = getEmoji('☕');
-    const expectedEmoji = { "name": "☕", "reaction_id": "862089271745314836" };
+    const expectedEmoji = { "name": "☕", "role_id": "862089271745314836" };
 
     expect(emoji).toMatchObject(expectedEmoji);
   });
