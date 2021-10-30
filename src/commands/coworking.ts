@@ -1,8 +1,9 @@
 import { Guild, OverwriteResolvable, PermissionString } from "discord.js";
 import { ICommandsProps } from "../DTO/CommandsDTO";
 
-import cron from 'node-cron';
 import { createChannel } from "../utils/createChannel";
+import { scheduleJob } from "node-schedule";
+import { voiceChannelMembers } from "../utils/voiceChannelMembers";
 
 const { channels } = require('../../config.json');
 
@@ -46,17 +47,15 @@ const coworking = async ({ message }: ICommandsProps) => {
 
   const channel = await createChannel(channelProps);
 
-  const job = cron.schedule("*/5 * * * *", () => {
-    const channelMembers = channel.members.size;
+  const job = scheduleJob("*/5 * * * *", () => {
+    const members = voiceChannelMembers(channel);
 
-    if(channelMembers !== 0) return;
-
-    channel.delete();
-
-    job.destroy();
+    if(!members) {
+      channel.delete();
+     
+      job.cancel();
+    }
   });
-
-  job.start();
 };
 
 export const details = {
