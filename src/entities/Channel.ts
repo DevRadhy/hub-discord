@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
-@Entity('messages')
-class Message {
+@Entity('channels')
+class Channels {
   @PrimaryColumn()
   readonly id: number;
 
@@ -9,7 +9,7 @@ class Message {
   guild_id: number;
 
   @Column()
-  message_id: number;
+  channel_id: number;
 
   @CreateDateColumn()
   created_at: Date;
@@ -18,4 +18,4 @@ class Message {
   updated_at: Date;
 }
 
-export { Message };
+export { Channels };
