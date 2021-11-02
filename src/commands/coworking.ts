@@ -5,13 +5,12 @@ import { createChannel } from "../utils/createChannel";
 import { scheduleJob } from "node-schedule";
 import { voiceChannelMembers } from "../utils/voiceChannelMembers";
 
-const { channels } = require('../../config.json');
-
 const coworking = async ({ message }: ICommandsProps) => {
   const mentions = message.mentions.users;
   const everyoneRole = message.guild?.roles.everyone.id as string;
   
-  const categoryID = message.guild?.channels.cache.get(channels.category_id) as CategoryChannelResolvable;
+  const category = String(process.env.CATEGORY_ID);
+  const categoryID = message.guild?.channels.cache.get(category) as CategoryChannelResolvable;
   const channelName = `${message.author.username}'s co-working`;
 
   message.delete();
