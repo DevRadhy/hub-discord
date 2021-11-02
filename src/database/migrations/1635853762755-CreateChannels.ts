@@ -1,14 +1,14 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateMessage1625761635483 implements MigrationInterface {
+export class CreateChannels1635853762755 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(new Table({
-      name: "messages",
+      name: "channels",
       columns: [
         {
           name: "id",
-          type: "int",
+          type: "integer",
           isPrimary: true,
           isGenerated: true,
           generationStrategy: "increment",
@@ -18,7 +18,7 @@ export class CreateMessage1625761635483 implements MigrationInterface {
           type: "int8",
         },
         {
-          name: "message_id",
+          name: "channel_id",
           type: "int8",
         },
         {
@@ -36,7 +36,7 @@ export class CreateMessage1625761635483 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("messages");
+    await queryRunner.dropTable("channels");
   }
 
 }
