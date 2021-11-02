@@ -3,24 +3,22 @@ import { IMessageProps } from "../../DTO/MessagesDTO";
 import { MessageRepository } from "../../repositories/MessagesRepository";
 
 class MessageService {
+  messageRepository =  getCustomRepository(MessageRepository);
+
   async create({ guild_id, message_id }: IMessageProps) {
-    const messageRepository = getCustomRepository(MessageRepository);
+    const message = this.messageRepository.create({ guild_id, message_id });
 
-    const message = messageRepository.create({ guild_id, message_id });
-
-    await messageRepository.save(message);
+    await this.messageRepository.save(message);
   }
 
   async getMessage({ guild_id, message_id }: IMessageProps) {
-    const messageRepository = getCustomRepository(MessageRepository);
-
-    const messageIdAlreadyExists = await messageRepository.findOne({ message_id });
+    const messageIdAlreadyExists = await this.messageRepository.findOne({ message_id });
 
     if(!messageIdAlreadyExists) {
       throw new Error("Reaction Role message does not exists.");
     }
 
-    const message = await messageRepository.findOne({ guild_id, message_id });
+    const message = await this.messageRepository.findOne({ guild_id, message_id });
 
     return message;
   }
