@@ -1,4 +1,4 @@
-import { Client, Intents, MessageEmbed } from "discord.js";
+import { Client, Intents } from "discord.js";
 import { event } from './events/message';
 import { Commands } from "./DTO/CommandsDTO";
 import { getEmoji } from "./utils/getEmoji";
@@ -71,21 +71,6 @@ client.on('messageReactionRemove', async (reaction, user) => {
   const emoji = getEmoji(emojiName);
 
   guildMember?.roles.remove(emoji.role_id);
-});
-
-client.on('guildMemberAdd', (member) => {
-  const channel = member.guild.systemChannel;
-
-  if (!channel) return;
-
-  const embed = new MessageEmbed();
-
-  embed.setColor('#F72585');
-  embed.setTitle('Welcome');
-  embed.setThumbnail(String(member.user.avatarURL()));
-  embed.setDescription(`Seja bem-vindo(a) ${member.user.username}`);
-
-  channel.send({ embeds: [embed] });
 });
 
 client.on('messageCreate', (message) => {
