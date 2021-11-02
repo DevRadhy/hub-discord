@@ -1,8 +1,8 @@
-import { Guild, OverwriteResolvable } from "discord.js";
+import { CategoryChannelResolvable, Guild, OverwriteResolvable } from "discord.js";
 
 export interface IChannelCreate {
   guild: Guild;
-  categoryID: string;
+  categoryID: CategoryChannelResolvable;
   channelName: string;
   limit: number;
   membersPermissions: OverwriteResolvable[];

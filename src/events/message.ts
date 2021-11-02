@@ -9,7 +9,7 @@ function event(client: Client, message: Message, commands: Commands) {
 
   const filterPrefixes = config.prefixes.filter((prefix: string) => message.content.startsWith(prefix));
 
-  if(filterPrefixes === []) return;
+  if(filterPrefixes.length <= 0) return;
 
   const PREFIX_LENGTH = filterPrefixes[0].length;
 

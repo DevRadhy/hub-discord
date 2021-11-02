@@ -1,4 +1,4 @@
-import { Guild, OverwriteResolvable, PermissionString } from "discord.js";
+import { CategoryChannelResolvable, Guild, OverwriteResolvable, PermissionString } from "discord.js";
 import { ICommandsProps } from "../DTO/CommandsDTO";
 
 import { createChannel } from "../utils/createChannel";
@@ -11,7 +11,7 @@ const coworking = async ({ message }: ICommandsProps) => {
   const mentions = message.mentions.users;
   const everyoneRole = message.guild?.roles.everyone.id as string;
   
-  const categoryID = channels.category_id;
+  const categoryID = message.guild?.channels.cache.get(channels.category_id) as CategoryChannelResolvable;
   const channelName = `${message.author.username}'s co-working`;
 
   message.delete();

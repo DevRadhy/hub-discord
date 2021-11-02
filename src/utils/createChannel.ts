@@ -7,7 +7,9 @@ export async function createChannel({ guild, categoryID, channelName, limit, mem
     permissionOverwrites: membersPermissions,
   });
 
-  channel.setParent(categoryID);
+  if(categoryID) {
+    channel.setParent(categoryID);
+  }
 
   return channel;
 }
