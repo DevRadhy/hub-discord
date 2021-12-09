@@ -1,7 +1,7 @@
 import { EntityRepository, Repository } from "typeorm";
-import { Channels } from "../entities/Channels";
+import { Channel } from "../entities/Channel";
 
-@EntityRepository(Channels)
-class ChannelsRepository extends Repository<Channels> {}
+@EntityRepository(Channel)
+class ChannelsRepository extends Repository<Channel> {}
 
 export { ChannelsRepository };

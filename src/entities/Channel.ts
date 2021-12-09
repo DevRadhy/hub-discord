@@ -1,15 +1,15 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('channels')
-class Channels {
+class Channel {
   @PrimaryColumn()
   readonly id: number;
 
   @Column()
-  guild_id: number;
+  guild_id: string;
 
   @Column()
-  channel_id: number;
+  channel_id: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -18,4 +18,4 @@ class Channels {
   updated_at: Date;
 }
 
-export { Channels };
+export { Channel };

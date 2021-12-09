@@ -2,8 +2,7 @@ import { CategoryChannelResolvable, Guild, OverwriteResolvable, PermissionString
 import { ICommandsProps } from "../DTO/CommandsDTO";
 
 import { createChannel } from "../utils/createChannel";
-import { scheduleJob } from "node-schedule";
-import { voiceChannelMembers } from "../utils/voiceChannelMembers";
+import { ChannelService } from "../database/services/ChannelService";
 
 const coworking = async ({ message }: ICommandsProps) => {
   const mentions = message.mentions.users;
@@ -12,8 +11,6 @@ const coworking = async ({ message }: ICommandsProps) => {
   const category = String(process.env.CATEGORY_ID);
   const categoryID = message.guild?.channels.cache.get(category) as CategoryChannelResolvable;
   const channelName = `${message.author.username}'s co-working`;
-
-  message.delete();
 
   if(mentions.size <= 0) return message.reply({ content: "Desculpe, você precisa mencionar um ou mais membros" });
 
@@ -36,8 +33,10 @@ const coworking = async ({ message }: ICommandsProps) => {
     });
   });
 
+  const guild = message.guild as Guild;
+
   const channelProps = {
-    guild: message.guild as Guild,
+    guild,
     categoryID,
     channelName,
     limit: mentions.size + 1,
@@ -46,15 +45,9 @@ const coworking = async ({ message }: ICommandsProps) => {
 
   const channel = await createChannel(channelProps);
 
-  const job = scheduleJob("*/5 * * * *", () => {
-    const members = voiceChannelMembers(channel);
+  const channelService = new ChannelService();
 
-    if(!members) {
-      channel.delete();
-     
-      job.cancel();
-    }
-  });
+  await channelService.create(guild.id, channel.id);
 };
 
 export const details = {

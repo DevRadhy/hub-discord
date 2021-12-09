@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: "${DATABASE_USER}"
       POSTGRES_PASSWORD: "${DATABASE_PASSWORD}"
-      POSTGRES_DB: "${DATABASE_DB}"
+      POSTGRES_DB: "${DATABASE_NAME}"
     volumes:
       - postgres:/data/postgres
     ports:

@@ -6,10 +6,10 @@ class Message {
   readonly id: number;
 
   @Column()
-  guild_id: number;
+  guild_id: string;
 
   @Column()
-  message_id: number;
+  message_id: string;
 
   @CreateDateColumn()
   created_at: Date;

@@ -15,11 +15,11 @@ export class CreateChannels1635853762755 implements MigrationInterface {
         },
         {
           name: "guild_id",
-          type: "int8",
+          type: "varchar",
         },
         {
           name: "channel_id",
-          type: "int8",
+          type: "varchar",
         },
         {
           name: "created_at",

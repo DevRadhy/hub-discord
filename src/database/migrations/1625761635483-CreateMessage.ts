@@ -15,11 +15,11 @@ export class CreateMessage1625761635483 implements MigrationInterface {
         },
         {
           name: "guild_id",
-          type: "int8",
+          type: "varchar",
         },
         {
           name: "message_id",
-          type: "int8",
+          type: "varchar",
         },
         {
           name: "created_at",
